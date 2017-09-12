@@ -18,6 +18,7 @@ namespace signalr01
         public Task<IEnumerable<UserDetails>> UsersOnline()
             => Task.FromResult(_usersOnline.Values.AsEnumerable());
 
+        //WEB : Start doSigNalR
         public Task AddUser(HubConnectionContext connection, UserDetails userDetails)
         {
             _usersOnline.TryAdd(connection, userDetails);
@@ -26,6 +27,7 @@ namespace signalr01
             return Task.CompletedTask;
         }
 
+        //WEB : Close Browser
         public Task RemoveUser(HubConnectionContext connection)
         {
             if (_usersOnline.TryRemove(connection, out var userDetails))

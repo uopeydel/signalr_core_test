@@ -1,9 +1,18 @@
 <h1>SigNalR</h1>
 <button (click)="doSigNalR()">doSigNalR</button>
 
-<input type="text" [(ngModel)]="TextForSend" />
+<br />
+<br />
+<input type="text" [(ngModel)]="IdForTestGroup" placeholder="IdForTestGroup"/>
+<input type="button" (click)="DoGroup()" value="DoGroup" />
+
+<br />
+<br />
+<input type="text" [(ngModel)]="TextForSend" placeholder="TextForSend"/>
 <input type="button" (click)="SendMessage()" value="SendMessage" />
 
+<br />
+<br />
 <div *ngFor="let user of users">{{user}}</div>
 
 <div *ngFor="let mess of messages">{{mess}}</div>

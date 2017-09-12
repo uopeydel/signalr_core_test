@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.SignalR.Redis;
+/////using Microsoft.AspNetCore.SignalR.Redis;
 
 namespace signalr01
 {
+    //Init002
     public class DefaultPresenceHublifetimeManager<THub> : PresenceHubLifetimeManager<THub, DefaultHubLifetimeManager<THub>>
         where THub : HubWithPresence
     {
@@ -19,15 +20,15 @@ namespace signalr01
         }
     }
 
-    public class RedisPresenceHublifetimeManager<THub> : PresenceHubLifetimeManager<THub, RedisHubLifetimeManager<THub>>
-    where THub : HubWithPresence
-    {
-        public RedisPresenceHublifetimeManager(IUserTracker<THub> userTracker, IServiceScopeFactory serviceScopeFactory,
-            ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
-            : base(userTracker, serviceScopeFactory, loggerFactory, serviceProvider)
-        {
-        }
-    }
+    //////////public class RedisPresenceHublifetimeManager<THub> : PresenceHubLifetimeManager<THub, RedisHubLifetimeManager<THub>>
+    //////////where THub : HubWithPresence
+    //////////{
+    //////////    public RedisPresenceHublifetimeManager(IUserTracker<THub> userTracker, IServiceScopeFactory serviceScopeFactory,
+    //////////        ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
+    //////////        : base(userTracker, serviceScopeFactory, loggerFactory, serviceProvider)
+    //////////    {
+    //////////    }
+    //////////}
 
     public class PresenceHubLifetimeManager<THub, THubLifetimeManager> : HubLifetimeManager<THub>, IDisposable
         where THubLifetimeManager : HubLifetimeManager<THub>
@@ -41,6 +42,7 @@ namespace signalr01
         private readonly HubLifetimeManager<THub> _wrappedHubLifetimeManager;
         private IHubContext<THub> _hubContext;
 
+        //Init 001
         public PresenceHubLifetimeManager(IUserTracker<THub> userTracker, IServiceScopeFactory serviceScopeFactory,
             ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
@@ -54,6 +56,7 @@ namespace signalr01
             _wrappedHubLifetimeManager = serviceProvider.GetRequiredService<THubLifetimeManager>();
         }
 
+        //WEB : Click DoSigNalR 001
         public override async Task OnConnectedAsync(HubConnectionContext connection)
         {
             await _wrappedHubLifetimeManager.OnConnectedAsync(connection);
@@ -61,6 +64,7 @@ namespace signalr01
             await _userTracker.AddUser(connection, new UserDetails(connection.ConnectionId, connection.User.Identity.Name));
         }
 
+        ////User 2 out.. 002
         public override async Task OnDisconnectedAsync(HubConnectionContext connection)
         {
             await _wrappedHubLifetimeManager.OnDisconnectedAsync(connection);
@@ -68,6 +72,7 @@ namespace signalr01
             await _userTracker.RemoveUser(connection);
         }
 
+        //WEB : Click DoSigNalR 002
         private async void OnUsersJoined(UserDetails[] users)
         {
             await Notify(hub =>
@@ -88,11 +93,13 @@ namespace signalr01
             });
         }
 
+        //User 2 out.. 003
         private async void OnUsersLeft(UserDetails[] users)
         {
             await Notify(hub => hub.OnUsersLeft(users));
         }
 
+        //WEB : Click DoSigNalR 003 //User 2 out.. 004
         private async Task Notify(Func<THub, Task> invocation)
         {
             foreach (var connection in _connections)
@@ -128,12 +135,14 @@ namespace signalr01
             }
         }
 
+        //On Error
         public void Dispose()
         {
             _userTracker.UsersJoined -= OnUsersJoined;
             _userTracker.UsersLeft -= OnUsersLeft;
         }
 
+        //WEB : Click SendMessage 002
         public override Task InvokeAllAsync(string methodName, object[] args)
         {
             return _wrappedHubLifetimeManager.InvokeAllAsync(methodName, args);
@@ -144,6 +153,7 @@ namespace signalr01
             return _wrappedHubLifetimeManager.InvokeAllExceptAsync(methodName, args, excludedIds);
         }
 
+        //WEB : Click DoSigNalR 004 //User 2 Join.. 003
         public override Task InvokeConnectionAsync(string connectionId, string methodName, object[] args)
         {
             return _wrappedHubLifetimeManager.InvokeConnectionAsync(connectionId, methodName, args);

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace signalr01
 {
+    //Interface
     public interface IUserTracker<out THub>
     {
         Task<IEnumerable<UserDetails>> UsersOnline();

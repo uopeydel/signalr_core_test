@@ -1,5 +1,6 @@
 ﻿namespace signalr01
 {
+    //Model
     public class UserDetails
     {
         public UserDetails(string connectionId, string name)

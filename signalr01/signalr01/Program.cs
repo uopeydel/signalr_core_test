@@ -19,7 +19,7 @@ namespace signalr01
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                //
+                //Add 01>
                 .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
                 .ConfigureLogging((context, factory) =>
                 {
@@ -27,7 +27,7 @@ namespace signalr01
                     factory.AddConsole();
                     factory.AddDebug();
                 })
-                //
+                //<Add 01
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 //.UseIISIntegration()
