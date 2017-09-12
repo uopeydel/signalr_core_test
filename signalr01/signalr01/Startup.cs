@@ -7,7 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.AspNetCore.SignalR;
+using signalr01.Hubs;
+using signalr01.Services;
 
 namespace signalr01
 {
@@ -23,12 +26,29 @@ namespace signalr01
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
+
+
             services.AddSignalR(options =>
             {
                 //options.Hubs.EnableDetailedErrors = true;
-            });
+            }
+            ).AddRedis();
 
-            services.AddMvc();
+            services.AddAuthentication().AddCookie();
+
+            services.AddSingleton(typeof(DefaultHubLifetimeManager<>), typeof(DefaultHubLifetimeManager<>));
+            services.AddSingleton(typeof(HubLifetimeManager<>), typeof(DefaultPresenceHublifetimeManager<>));
+            services.AddSingleton(typeof(IUserTracker<>), typeof(InMemoryUserTracker<>));
+
+            //services.AddSingleton(typeof(RedisHubLifetimeManager<>), typeof(RedisHubLifetimeManager<>));
+            //services.AddSingleton(typeof(HubLifetimeManager<>), typeof(RedisPresenceHublifetimeManager<>));
+            //services.AddSingleton(typeof(IUserTracker<>), typeof(RedisUserTracker<>));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,8 +68,13 @@ namespace signalr01
             }
 
             app.UseStaticFiles();
+
             app.UseWebSockets();
-            //app.UseSignalR();
+
+            app.UseSignalR(config =>
+            {
+                config.MapHub<Chat>("chat");
+            });
 
             app.UseStaticFiles();
 
