@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@aspnet/signalr-client",
+        "scope": "@aspnet",
+        "escapedName": "@aspnet%2fsignalr-client",
+        "name": "@aspnet/signalr-client",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\GIT\\SignalR\\signalr_core_test\\signalr01\\signalr01"
+    ]
+  ],
+  "_from": "@aspnet/signalr-client@latest",
+  "_id": "@aspnet/signalr-client@1.0.0-alpha1-26970",
+  "_inCache": true,
+  "_location": "/@aspnet/signalr-client",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@aspnet/signalr-client",
+    "scope": "@aspnet",
+    "escapedName": "@aspnet%2fsignalr-client",
+    "name": "@aspnet/signalr-client",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://dotnet.myget.org/F/aspnetcore-ci-dev/npm/@aspnet/signalr-client/-/@aspnet/signalr-client-1.0.0-alpha1-26970.tgz",
+  "_shasum": "01417499025d6ec384ce4a0ea70c95d90960724c",
+  "_shrinkwrap": null,
+  "_spec": "@aspnet/signalr-client",
+  "_where": "D:\\GIT\\SignalR\\signalr_core_test\\signalr01\\signalr01",
+  "author": {
+    "name": "Microsoft"
+  },
+  "bugs": {
+    "url": "https://github.com/aspnet/SignalR/issues"
+  },
+  "dependencies": {
+    "msgpack5": "^3.5.0"
+  },
+  "description": "ASP.NET Core SignalR",
+  "devDependencies": {
+    "@types/msgpack5": "^3.4.0",
+    "babel-minify": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "buffer": "^5.0.7",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^3.1.3",
+    "jasmine": "^2.5.2",
+    "lodash": "^4.17.4",
+    "typescript": "^2.0.10",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "01417499025d6ec384ce4a0ea70c95d90960724c",
+    "tarball": "https://dotnet.myget.org/F/aspnetcore-ci-dev/npm/@aspnet/signalr-client/-/@aspnet/signalr-client-1.0.0-alpha1-26970.tgz"
+  },
+  "homepage": "https://github.com/aspnet/SignalR#readme",
+  "license": "Apache-2.0",
+  "main": "dist/src/index.js",
+  "name": "@aspnet/signalr-client",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aspnet/SignalR.git"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "pretest": "tsc -p Microsoft.AspNetCore.SignalR.Client.TS.Tests",
+    "test": "jasmine JASMINE_CONFIG_PATH=Microsoft.AspNetCore.SignalR.Client.TS.Tests/jasmine.json"
+  },
+  "typings": "dist/src/index.d.ts",
+  "version": "1.0.0-alpha1-26970"
+}

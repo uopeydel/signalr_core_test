@@ -37,7 +37,7 @@ namespace signalr01
             {
                 //options.Hubs.EnableDetailedErrors = true;
             }
-            ).AddRedis();
+            );//.AddRedis();
 
             services.AddAuthentication().AddCookie();
 

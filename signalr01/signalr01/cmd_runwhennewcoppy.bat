@@ -1,0 +1,1 @@
+npm install && npm run build:dev && dotnet restore

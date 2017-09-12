@@ -69,6 +69,11 @@
       "from": "@angular/tsc-wrapped@4.2.5",
       "resolved": "https://registry.npmjs.org/@angular/tsc-wrapped/-/tsc-wrapped-4.2.5.tgz"
     },
+    "@aspnet/signalr-client": {
+      "version": "1.0.0-alpha1-26970",
+      "from": "@aspnet/signalr-client@latest",
+      "resolved": "https://dotnet.myget.org/F/aspnetcore-ci-dev/npm/@aspnet/signalr-client/-/@aspnet/signalr-client-1.0.0-alpha1-26970.tgz"
+    },
     "@ngtools/webpack": {
       "version": "1.5.0",
       "from": "@ngtools/webpack@latest",
@@ -406,6 +411,11 @@
       "version": "1.8.0",
       "from": "binary-extensions@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/binary-extensions/-/binary-extensions-1.8.0.tgz"
+    },
+    "bl": {
+      "version": "1.2.1",
+      "from": "bl@>=1.2.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/bl/-/bl-1.2.1.tgz"
     },
     "blob": {
       "version": "0.0.4",
@@ -2063,6 +2073,11 @@
       "version": "2.0.0",
       "from": "ms@2.0.0",
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
+    },
+    "msgpack5": {
+      "version": "3.5.1",
+      "from": "msgpack5@latest",
+      "resolved": "https://registry.npmjs.org/msgpack5/-/msgpack5-3.5.1.tgz"
     },
     "nanomatch": {
       "version": "1.2.0",
