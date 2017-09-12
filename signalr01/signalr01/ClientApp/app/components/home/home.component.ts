@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
     doSigNalR() {
         this.transportType = signalR.TransportType.WebSockets;
         let logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
-        let http = new signalR.HttpConnection(`http://${document.location.host}/chat`, { transport: this.transportType, logging: logger });
+        let http = new signalR.HttpConnection(`http://${document.location.host}/chat`, { transport: this.transportType, logging: logger , });
+       // let connectOption = new signalR.;
         this.connection = new signalR.HubConnection(http);
 
         this.connection.onClosed = e => {
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
 
     IdForTestGroup: string ="";
     DoGroup() {
-        this.connection.invoke('Send', [this.IdForTestGroup, this.TextForSend]).catch(err => this.appendLine(err, 'red'));
+        this.connection.invoke('SendUser', [this.IdForTestGroup, this.TextForSend]).catch(err => this.appendLine(err, 'red'));
     }
 }
 

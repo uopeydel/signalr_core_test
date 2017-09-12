@@ -14,7 +14,7 @@ namespace signalr01.Hubs
         {
         }
 
-        ////doSigNalR01
+        //WEB : Start doSigNalR 003 ////doSigNalR01
         public override async Task OnConnectedAsync()
         {
             await Clients.Client(Context.ConnectionId).InvokeAsync("SetUsersOnline", await GetUsersOnline());
@@ -40,5 +40,27 @@ namespace signalr01.Hubs
         {
             await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
         }
+
+        /// <summary>
+        /// Send2 == methodName
+        /// 
+        /// //"Send" who subscript this can hear this
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public async Task Send2(string[] message)
+        {
+            //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
+            //
+            await Clients.Group("Send").InvokeAsync("SendInvoke", message[0]);
+        }
+
+        public async Task SendClients(string[] message)
+        {
+            //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
+            //
+            await Clients.Client(message[0]).InvokeAsync(message[1] , "message"+ message);
+        }
+
     }
 }

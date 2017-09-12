@@ -10,13 +10,13 @@ namespace signalr01
     {
         private IUserTracker<HubWithPresence> _userTracker;
 
-        //User 2 Join.. 001 ////User 2 out.. 001
+        //WEB : Start doSigNalR 002  //User 2 Join.. 001 ////User 2 out.. 001
         public HubWithPresence(IUserTracker<HubWithPresence> userTracker)
         {
             _userTracker = userTracker;
         }
 
-        //User 2 Join.. 002
+        //WEB : Start doSigNalR 004 //User 2 Join.. 002
         public Task<IEnumerable<UserDetails>> GetUsersOnline()
         {
             return _userTracker.UsersOnline();

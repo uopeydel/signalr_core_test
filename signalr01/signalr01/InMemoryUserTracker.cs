@@ -18,7 +18,7 @@ namespace signalr01
         public Task<IEnumerable<UserDetails>> UsersOnline()
             => Task.FromResult(_usersOnline.Values.AsEnumerable());
 
-        //WEB : Start doSigNalR
+        //WEB : Start doSigNalR 001
         public Task AddUser(HubConnectionContext connection, UserDetails userDetails)
         {
             _usersOnline.TryAdd(connection, userDetails);

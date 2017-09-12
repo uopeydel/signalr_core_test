@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Microsoft.AspNetCore.SignalR;
 using signalr01.Hubs;
-////////using signalr01.Services;
 
 namespace signalr01
 {
@@ -28,16 +27,8 @@ namespace signalr01
         {
             services.AddMvc();
 
-            ////////// Add application services.
-            ////////services.AddTransient<IEmailSender, AuthMessageSender>();
-            ////////services.AddTransient<ISmsSender, AuthMessageSender>();
-
             //>AddSignalR
-            services.AddSignalR(options =>
-            {
-                //options.Hubs.EnableDetailedErrors = true;
-            }
-            );//.AddRedis();
+            services.AddSignalR(options => {});
             //<AddSignalR
             
             services.AddAuthentication().AddCookie();
@@ -47,10 +38,6 @@ namespace signalr01
             services.AddSingleton(typeof(HubLifetimeManager<>), typeof(DefaultPresenceHublifetimeManager<>));
             services.AddSingleton(typeof(IUserTracker<>), typeof(InMemoryUserTracker<>));
             //<AddSingleton
-
-            //services.AddSingleton(typeof(RedisHubLifetimeManager<>), typeof(RedisHubLifetimeManager<>));
-            //services.AddSingleton(typeof(HubLifetimeManager<>), typeof(RedisPresenceHublifetimeManager<>));
-            //services.AddSingleton(typeof(IUserTracker<>), typeof(RedisUserTracker<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,12 +59,14 @@ namespace signalr01
             app.UseStaticFiles();
 
             app.UseWebSockets();
+
             //>UseSignalR
             app.UseSignalR(config =>
             {
                 config.MapHub<Chat>("chat");
             });
             //<UseSignalR
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

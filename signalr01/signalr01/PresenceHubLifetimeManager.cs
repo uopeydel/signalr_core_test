@@ -19,17 +19,7 @@ namespace signalr01
         {
         }
     }
-
-    //////////public class RedisPresenceHublifetimeManager<THub> : PresenceHubLifetimeManager<THub, RedisHubLifetimeManager<THub>>
-    //////////where THub : HubWithPresence
-    //////////{
-    //////////    public RedisPresenceHublifetimeManager(IUserTracker<THub> userTracker, IServiceScopeFactory serviceScopeFactory,
-    //////////        ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
-    //////////        : base(userTracker, serviceScopeFactory, loggerFactory, serviceProvider)
-    //////////    {
-    //////////    }
-    //////////}
-
+    
     public class PresenceHubLifetimeManager<THub, THubLifetimeManager> : HubLifetimeManager<THub>, IDisposable
         where THubLifetimeManager : HubLifetimeManager<THub>
         where THub : HubWithPresence
@@ -147,6 +137,11 @@ namespace signalr01
         {
             return _wrappedHubLifetimeManager.InvokeAllAsync(methodName, args);
         }
+
+        //public override Task InvokeAllAsync2(string methodName, object[] args)
+        //{
+        //    return _wrappedHubLifetimeManager.InvokeAllAsync(methodName, args);
+        //}
 
         public override Task InvokeAllExceptAsync(string methodName, object[] args, IReadOnlyList<string> excludedIds)
         {
