@@ -1,0 +1,10 @@
+﻿//MyGet
+
+https://dotnet.myget.org/feed/aspnetcore-ci-dev/package/nuget/Microsoft.AspNetCore.SignalR/1.0.0-alpha1-26970
+
+https://dotnet.myget.org/feed/aspnetcore-ci-dev/package/nuget/Microsoft.AspNetCore.WebSockets/2.1.0-preview1-26970
+
+https://docs.myget.org/docs/walkthrough/getting-started-with-nuget
+
+**Microsoft.AspNetCore.SignalR.Redis
+https://dotnet.myget.org/feed/aspnetcore-ci-dev/package/nuget/Microsoft.AspNetCore.SignalR.Redis/1.0.0-alpha1-26970
