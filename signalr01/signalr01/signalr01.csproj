@@ -12,7 +12,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Server" Version="0.0.1-alpha" />
-    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.1.0-preview1-26970" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha1-26970" />
   </ItemGroup>
 
   <ItemGroup>
