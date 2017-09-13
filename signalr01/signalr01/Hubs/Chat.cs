@@ -48,7 +48,7 @@ namespace signalr01.Hubs
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public async Task Send2(string[] message)
+        public async Task Send2(string[] message, string datax)
         {
             //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
             //
@@ -60,6 +60,14 @@ namespace signalr01.Hubs
             //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
             //
             await Clients.Client(message[0]).InvokeAsync(message[1] , "message"+ message);
+        }
+
+        public async Task GroupsAddAsync(string connectionId, string groupName)
+        {
+            //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
+            //
+            
+            await Groups.AddAsync(connectionId, groupName);
         }
 
     }
