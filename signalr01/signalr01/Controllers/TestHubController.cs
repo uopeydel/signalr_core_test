@@ -27,6 +27,7 @@ namespace signalr01.Controllers
                 .WithUrl(baseUrl)
                 .WithConsoleLogger()
                 .Build();
+            
 
             try
             {

@@ -8,6 +8,7 @@ namespace signalr01.Hubs
 {
     public class Chat : HubWithPresence
     {
+        private static List<UserDetails> UserMap = new List<UserDetails>();
         //doSigNalR
         public Chat(IUserTracker<Chat> userTracker)
             : base(userTracker)
@@ -48,10 +49,13 @@ namespace signalr01.Hubs
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public async Task Send2(string[] message, string datax)
+        public async Task Send2(string[] message, string name)
         {
             //await Clients.All.InvokeAsync("Send", Context.User.Identity.Name, message);
             //
+            var User = new UserDetails(message[1], name);
+            UserMap.Add(User);
+
             await Clients.Group("Send").InvokeAsync("SendInvoke", message[0]);
         }
 

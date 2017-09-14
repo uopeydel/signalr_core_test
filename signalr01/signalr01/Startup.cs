@@ -66,9 +66,7 @@ namespace signalr01
                 config.MapHub<Chat>("chat");
             });
             //<UseSignalR
-
-            app.UseStaticFiles();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
