@@ -27,6 +27,19 @@ namespace signalr01
         {
             services.AddMvc();
 
+            //>Add permission enable cross-origin requests (CORS) from angular
+            services.AddCors(options =>
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.AllowCredentials();
+                    })
+                );
+            //<Add permission
+
             //>AddSignalR
             services.AddSignalR(options => {});
             //<AddSignalR
@@ -66,7 +79,15 @@ namespace signalr01
                 config.MapHub<Chat>("chat");
             });
             //<UseSignalR
-            
+
+            app.UseCors("AllowAll");
+            //UseCors allow origin for test signalR by fontend other Origins
+            app.UseCors(config => config.WithOrigins("http://localhost:58141")
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            //<UseSignalR
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
