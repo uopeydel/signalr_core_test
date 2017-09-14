@@ -1,5 +1,14 @@
 <h1>SigNalR</h1>
-<button (click)="doSigNalR()">doSigNalR</button>
+<button (click)="doSigNalR()">Start SigNalR</button>
+
+<input type="number" [(ngModel)]="RegisterId" placeholder="IdName" />
+<input type="number" [(ngModel)]="RegisterClientType" placeholder="ClientType" />
+
+<br />
+<br />
+<input type="text" [(ngModel)]="IdForTestGroup" placeholder="IdForTestGroup" />
+<input type="button" (click)="DoGroup()" value="DoGroup" />
+
 
 <br />
 <br />
