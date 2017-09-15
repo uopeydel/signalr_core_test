@@ -19,7 +19,7 @@ namespace signalr01
         {
         }
     }
-    
+
     public class PresenceHubLifetimeManager<THub, THubLifetimeManager> : HubLifetimeManager<THub>, IDisposable
         where THubLifetimeManager : HubLifetimeManager<THub>
         where THub : HubWithPresence

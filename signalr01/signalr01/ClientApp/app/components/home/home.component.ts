@@ -29,8 +29,8 @@ export class HomeComponent implements OnInit {
         let connectOption = new signalR.HttpClient();
         console.log(connectOption.options);
         var Domain = `http://${document.location.host}/chat`;
-        Domain = 'http://localhost:54021/NotificationHub';
-        let http = new signalR.HttpConnection(Domain, { transport: this.transportType, logging: logger, httpClient: connectOption });
+        //Domain = 'http://localhost:54021/NotificationRQHubURL';
+        let http = new signalR.HttpConnection(Domain, { transport: this.transportType, logging: logger});
 
         this.connection = new signalR.HubConnection(http);
 
@@ -65,13 +65,15 @@ export class HomeComponent implements OnInit {
             this.messages.push(userName + ':' + message);
         });
 
-        this.connection.start().then(data => {
-            this.connection.send('RegisterUserMap', this.RegisterId, this.RegisterClientType)
-                .catch(err => {
-                    this.connection.stop();
-                    this.appendLine(err, 'red');
-                });
-        }).catch(err => {
+        this.connection.start()
+            .then(data => {
+            //this.connection.send('RegisterUserMap', this.RegisterId, this.RegisterClientType)
+            //    .catch(err => {
+            //        this.connection.stop();
+            //        this.appendLine(err, 'red');
+            //    });
+        })
+            .catch(err => {
             this.appendLine(err, 'red');
             this.connection.stop();
         });

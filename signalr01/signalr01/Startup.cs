@@ -40,7 +40,7 @@ namespace signalr01
                 );
             //<Add permission
 
-            //>AddSignalR
+            //>Add SignalR
             services.AddSignalR(options => {});
             //<AddSignalR
             
