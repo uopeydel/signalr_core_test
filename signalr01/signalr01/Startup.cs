@@ -41,9 +41,9 @@ namespace signalr01
             //<Add permission
 
             //>Add SignalR
-            services.AddSignalR(options => {});
+            services.AddSignalR(options => { });
             //<AddSignalR
-            
+
             services.AddAuthentication().AddCookie();
 
             //>AddSingleton
@@ -69,20 +69,27 @@ namespace signalr01
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+
+            app.UseCors("AllowAll");
+
             app.UseStaticFiles();
-
             app.UseWebSockets();
-
             //>UseSignalR
             app.UseSignalR(config =>
             {
-                config.MapHub<Chat>("chat");
+                config.MapHub<Chat>("Chat");
             });
             //<UseSignalR
 
-            app.UseCors("AllowAll");
+
             //UseCors allow origin for test signalR by fontend other Origins
-            app.UseCors(config => config.WithOrigins("http://localhost:58141")
+            app.UseCors(config => config.WithOrigins(
+                /*"http://localhost:58141", */
+                "http://localhost:8100",
+                "http://172.23.224.1:8100",
+                "http://192.168.20.73:8100"
+                )
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod());
