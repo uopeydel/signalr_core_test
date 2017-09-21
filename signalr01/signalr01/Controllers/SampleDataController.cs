@@ -10,6 +10,13 @@ namespace signalr01.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        [HttpGet("APITEST")]
+        public IActionResult APITEST()
+        {
+            return Ok(Request.Host.Host+":"+ Request.Host.Port);
+        }
+
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
